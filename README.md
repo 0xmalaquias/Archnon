@@ -2,9 +2,9 @@
 [*] Deep Bash based proxy automation for linux distros, (uses Tor and firewall rules).
 
 [!] Requires: 
-- openbsd-netcat curl tor iptables iproute2 networkmanager e2fsprogs coreutils util-linux bash iptables-nft nftables sudo obfs4proxy, to be installed on your system(sometimes you dont care about this, many modern cibersecurity distros comes with all these pkgs, ex: parrot OS)
+- openbsd-netcat curl tor iptables iproute2 networkmanager e2fsprogs coreutils util-linux bash iptables-nft nftables sudo obfs4proxy nyx, to be installed on your system(sometimes you dont care about this, many modern cibersecurity distros comes with all these pkgs, ex: parrot OS)
 
-[!] Script actions: --start, --stop, --restart, --boot-enable, --boot-disable, --myip, --change, --fix, --set-bridges --restart-torrc, --help.
+[!] Script actions: --start, --stop, --restart, --status, --boot-enable, --boot-disable, --myip, --change, --fix, --set-bridges --restart-torrc, --help.
 
 [!] To use it right now: 
 - Note: always run this as root, (if you have sudo/git installed on your system)
