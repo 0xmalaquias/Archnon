@@ -8,7 +8,7 @@
 
 [!] To use it right now: 
 - Note: always run this as root, (if you have sudo/git installed on your system)
-- git clone https://github.com/NewMaster27/tonion && cd tonion && chmod +x * && ./tonion help
+- git clone https://github.com/NewMaster27/tonion && cd tonion && chmod +x * && ./tonion.git help
 
 [!] In addition:
 - Recommended: Configure a secure non standard/common browser(like tor's one, it is easy). 
