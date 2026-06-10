@@ -1,8 +1,12 @@
 # [ tonion ]
 [*] Deep Bash based proxy automation for linux distros, (uses Tor and firewall rules).
 
-[!] Requires: 
-- openbsd-netcat curl tor iptables iproute2 networkmanager e2fsprogs coreutils util-linux bash iptables-nft nftables sudo obfs4proxy nyx, to be installed on your system(sometimes you dont care about this, many modern cibersecurity distros comes with all these pkgs, ex: parrot OS)
+[*] Supports open-rc, systemd, runit for service managment on boot.
+
+[*] Firewall rules are iptables based, translated to nftables by useing iptables-nft module, disables icmp-echo-request (pings) and allowing traffic/communication only trough tor.
+
+[!] Required PKGs: 
+- openbsd-netcat curl tor iptables iproute2 networkmanager e2fsprogs coreutils util-linux bash iptables-nft nftables sudo nyx
 
 [!] Script actions: --start, --stop, --restart, --status, --boot-enable, --boot-disable, --myip, --change, --fix, --set-bridges --restart-torrc, --help.
 
