@@ -200,7 +200,10 @@ if ss -tulpn | grep -iE "6969|9150|9151|9140" >/dev/null 2>&1; then
    echo -e "\n${P}[${GREEN}INFO${P}]${GREEN} TheOnionBox is already running${NC}"
    exit 1
 fi
-   
+sudo setenforce 0 >/dev/null 2>&1
+sudo semanage permissive -a unconfirmed_t >/dev/null 2>&1
+sudo nft flush ruleset >/dev/null 2>&1
+
    mods=( ip_tables iptable_filter x_tables xt_conntrack ipt_REJECT iptable_mangle iptable_nat ipt_MASQUERADE nft_tables )
 
    for i in "${mods[@]}"; do
@@ -376,6 +379,10 @@ if [ "$EUID" -ne 0 ]; then
     echo -e "\n${RED}[${GREEN}ERR${RED}]${GREEN} Perform this action as ${RED}root${NC}"
     exit 1
 fi
+
+sudo setenforce 0 >/dev/null 2>&1
+sudo semanage permissive -a unconfirmed_t >/dev/null 2>&1
+sudo nft flush ruleset >/dev/null 2>&1
 
 if ss -tulpn | grep -iE "6969|9150|9151|9140" >/dev/null 2>&1 || pgrep tor >/dev/null 2>&1; then
 
