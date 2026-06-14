@@ -224,7 +224,10 @@ sudo nft add rule inet onionbox_filter filter_input icmp type echo-request drop
 sudo nft add rule inet onionbox_filter filter_input icmpv6 type echo-request drop
 
 sudo nft add rule inet onionbox_filter filter_output oifname "lo" accept
-sudo nft add rule inet onionbox_filter filter_output ct state new,established,related accept
+sudo nft add rule inet onionbox_filter filter_output ct state established,related accept
+sudo nft add rule inet onionbox_filter filter_output udp dport 53 accept
+sudo nft add rule inet onionbox_filter filter_output tcp dport 53 accept
+sudo nft add rule inet onionbox_filter filter_output tcp dport { 80, 443 } accept
 sudo nft add rule inet onionbox_filter filter_output oifname "lo" icmp type echo-request ct state new,established,related accept
 sudo nft add rule inet onionbox_filter filter_output icmp type echo-request drop
 sudo nft add rule inet onionbox_filter filter_output skuid "$TOR_USER" accept
@@ -240,6 +243,7 @@ sudo nft add rule ip onionbox_nat tor_nat_out ip daddr { 127.0.0.0/8, 192.168.0.
 sudo nft add rule ip onionbox_nat tor_nat_out udp dport 53 dnat to 127.0.0.1:5353
 sudo nft add rule ip onionbox_nat tor_nat_out tcp dport 53 dnat to 127.0.0.1:5353
 sudo nft add rule ip onionbox_nat tor_nat_out tcp dport != 6969 dnat to 127.0.0.1:6969
+
 
    sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
    sysctl -w net.ipv4.icmp_echo_ignore_all=1 >/dev/null 2>&1
