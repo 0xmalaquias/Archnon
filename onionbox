@@ -222,7 +222,8 @@ sudo nft add rule inet onionbox_filter filter_input ip daddr 127.0.0.1 udp dport
 sudo nft add rule inet onionbox_filter filter_input ip daddr 127.0.0.1 tcp dport 6969 accept
 
 sudo nft add rule inet onionbox_filter filter_output oifname "lo" accept
-sudo nft add rule inet onionbox_filter filter_output ct state established,related accept
+sudo nft add rule inet onionbox_filter filter_output ct state { established, related } accept
+sudo nft add rule inet onionbox_filter filter_output ct state new tcp flags & (syn | rst | ack | fin) == syn accept
 
 sudo nft add rule inet onionbox_filter filter_output ip daddr != 127.0.0.0/8 udp dport 53 accept
 sudo nft add rule inet onionbox_filter filter_output ip daddr != 127.0.0.0/8 tcp dport 53 accept
@@ -238,7 +239,14 @@ sudo nft add chain ip onionbox_nat tor_nat_out { type nat hook output priority -
 
 sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 udp dport 53 return
 sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 tcp dport 53 return
-sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 tcp dport { 80, 443
+sudo nft add rule ip onionbox_nat tor_nat_out ip daddr != 127.0.0.0/8 tcp dport { 80, 443 } return
+
+sudo nft add rule ip onionbox_nat tor_nat_out skuid "$TOR_USER" return
+sudo nft add rule ip onionbox_nat tor_nat_out ip daddr { 127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, 169.254.0.0/16 } return
+sudo nft add rule ip onionbox_nat tor_nat_out udp dport 53 dnat to 127.0.0.1:5353
+sudo nft add rule ip onionbox_nat tor_nat_out tcp dport 53 dnat to 127.0.0.1:5353
+sudo nft add rule ip onionbox_nat tor_nat_out tcp dport != 6969 dnat to 127.0.0.1:6969
+
 
 
    sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
