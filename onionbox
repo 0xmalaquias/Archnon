@@ -265,7 +265,7 @@ sudo nft add rule ip onionbox_nat tor_nat_out tcp flags syn redirect to :6969
 
    sudo -u $TOR_USER tor --RunAsDaemon 1 >/dev/null 2>&1
    echo -e "\n${BLUE}[${GREEN}STATUS${BLUE}]${GREEN} TheOnionBox is running${BLUE}(${GREEN}done${BLUE})${NC}"
-   echo -e "\n${BLUE}[${GREEN}WARN${BLUE}]${GREEN} Note: Since firewall rules are were thinked to drop every single packet doesnt come from lo or Tor, from now you must use the feature '${YELLOW}onionbox -l <your_link_here>'${GREEN} to resolv https addresses(can aslo resolv ${P}.onion${GREEN})${NC}"
+   echo -e "\n${BLUE}[${YELLOW}WARN${BLUE}]${GREEN} Note: From now you must use the feature '${YELLOW}onionbox -l <your_link_here>'${GREEN} to resolv any link(can aslo resolv ${P}.onion${GREEN}), the reason is the strict firewall rules${NC}"
 }
 
 
@@ -384,7 +384,7 @@ if ! ss -tulpn | grep -iE "6969|9150|9151" >/dev/null 2>&1; then
     break
 else
     echo -e "\n${P}[${YELLOW}WARN${P}]${GREEN} TheOnionBox is already running${NC}"
-    echo -e "\n${BLUE}[${GREEN}WARN${BLUE}]${GREEN} Note: Since firewall rules are were thinked to drop every single packet doesnt come from lo or Tor, from now you must use the feature '${YELLOW}onionbox -l <your_link_here>'${GREEN} to resolv https addresses(can aslo resolv ${P}.onion${GREEN})${NC}"
+     echo -e "\n${BLUE}[${YELLOW}WARN${BLUE}]${GREEN} Note: From now you must use the feature '${YELLOW}onionbox -l <your_link_here>'${GREEN} to resolv any link(can aslo resolv ${P}.onion${GREEN}), the reason is the strict firewall rules${NC}"
     exit 0
     shift 
     break
