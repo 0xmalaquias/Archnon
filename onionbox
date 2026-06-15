@@ -28,7 +28,7 @@ if ! (command -v nc >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && comman
 	       fi
 	       wait
 
-        elif [[ $(command -v pacm*an) ]]; then
+        elif [[ $(command -v pacman) ]]; then
               
               pkgs=( openbsd-netcat curl tor nftables procps-ng networkmanager iproute2 coreutils util-linux bash sudo ) 
 
