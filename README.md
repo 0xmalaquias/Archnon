@@ -1,7 +1,7 @@
 # < --- [ ArchNoN Project ] --- > #
 [*] Two powerfull bash based scripts that automates a secure Tor+Firewall+No IPv6 configuration on linux distros(requires full root access).
 
-# [ Requriments ] # 
+# [ Requeriments ] # 
 [*] Required PKGs: 
 - openbsd-netcat curl tor coreutils util-linux bash nftables sudo(some pkg names are different, depends entirely on your pkg manager/distro).
 
@@ -49,7 +49,7 @@
 # [ Boot ] #
 [*] Supported service managers are: Open-RC, Systemd and Runit only.
 
-# [ Recommended Actions ] #
+# [ Recommended ] #
 
 - Configure a Web Browser(prefer tor's one, it is very easy): You would have to force its internet connection to the socks5 proxy address/ports, ex(if torbrowser): Proxy address: 127.0.0.1, Allowed ports: 443,80,9150,9151,6969, then Restart it. Note: it doesnt makes you 100% invisible, as i said before, will depend entirely on your browser/config you have on it.
 
