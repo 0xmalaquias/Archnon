@@ -62,7 +62,7 @@ if ! (command -v nc >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && comman
 
               pkgs=( nmap-ncat curl tor nftables procps-ng NetworkManager iproute coreutils util-linux bash sudo )
 
-              if ! zypper --no-interactive install "${pkgs[@]}"; then
+              if ! zypper install "${pkgs[@]}"; then
 	             echo -e "${RED}[${GREEN}err${RED}]${BLUE} Missing dependencies: ${YELLOW}(${GREEN}${pkgs[@]}${YELLOW}) !!${NC}"
 	             exit 1
 	          fi
