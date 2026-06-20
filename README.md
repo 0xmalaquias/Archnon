@@ -1,9 +1,9 @@
 # < --- [ ArchNoN Project ] --- > #
-[*] Two powerfull bash based scripts that automates a secure Tor+Firewall+No IPv6 configuration on linux distros(requires full root access).
+[*] Bash based automation of Tor on its strongest privacy configuration with no IPv6 policy and nftables based firewall rules for linux distros.
 
 [WARN] THIS SCRIPT IS A PERSONAL PROJECT, TAKE CARE WHEN USING IT, IT MAY WORK ON ALMOST LITERALLY ANY DISTRO, BUT IS VERY AGRESSIVE, YOU MAY HAVE INTERNET CONNECTION ISSUES IF USE IT BADLY !!. PERHAPS, IM NOT RESPONSABLE ABOUT ANY ISSUE, AS I SAID BEFORE, IT IS A PERSONAL PROJECT.
 
-[*] If you'll use it on a fakeroot/chroot env like proot/nethunter, on termux, you have to know that script will block you entirelly to use curl normally, to resolv any link you must use tool’s "link" param, or give to curl the param: --socks5-hostname 127.0.0.1:9150.
+[*] If you'll use it on a fakeroot/chroot env like proot/nethunter, on termux, you have to know that script will block you entirelly to use curl normally, (because it wont be able to apply fireall, only if you are rooted), to resolv any link you must use tool’s "link" param, or give to curl the param: --socks5-hostname 127.0.0.1:9150.
 
 # [ Requeriments ] # 
 [*] Required PKGs: 
@@ -11,9 +11,7 @@
 
 # [ Content ] #
 
-- archnon >> Old version of the script(uses old/slower iptables, but works perfectly !!). 
-
-- archnon-nft >> Modern version of the script, it uses the modern, clean, faster alternative to iptables: nftables. Sometimes is much faster than old iptables(better on all sense).
+- archnon > Modern version of the script, it uses the modern, clean, faster alternative to iptables: nftables. Sometimes is much faster than old iptables(better on all sense).
 
 - example_bridges.txt >> It is just a list of tor bridges, you can grab them from here: https://bridges.torproject.org/options/en, or, if you prefer .onion: kgclfuro65jjlivyzfmxiq2kyv5lickrl4qd.onion/options/en
 
