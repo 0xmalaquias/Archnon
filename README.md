@@ -11,7 +11,7 @@
 
 # [ Content ] #
 
-- archnon > Modern version of the script, it uses the modern, clean, faster alternative to iptables: nftables. Sometimes is much faster than old iptables(better on all sense).
+- archnon >> Modern version of the script, it uses the modern, clean, faster alternative to iptables: nftables. Sometimes is much faster than old iptables(better on all sense).
 
 - example_bridges.txt >> It is just a list of tor bridges, you can grab them from here: https://bridges.torproject.org/options/en, or, if you prefer .onion: kgclfuro65jjlivyzfmxiq2kyv5lickrl4qd.onion/options/en
 
