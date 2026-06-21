@@ -1,6 +1,5 @@
 # <[ ArchNoN Anonimation Tool v3.0.4 ]> #
-- [notice] Bash based Tool that uses Tor's strongest privacy configuration, plus no IPv6 policy and a secure nftables firewall for linux distros.
-
+- [notice] Bash based script that makes your linux machine's internet traffic go trought tor's network, applies a secure firewall configuration(nftables) and disables IPv6 at the kernel level !!.
 - [warn] ArchNoN is a personal project developed by newmasterone27@gmail.com, if you will use it you have to know that developer wont answer in case of any issue occurs in your machine(perhaps, issues are not common, in fact, they are incredible weird).
 
 - [warn] If you'll use it on a fakeroot/chroot env like proot/nethunter, on termux, you have to know that script will block you entirelly to use curl normally, (because it wont be able to apply firewall, only if you are rooted), to resolv any link you must use tool’s "link" param, or give to curl the param: --socks5-hostname 127.0.0.1:9150.
