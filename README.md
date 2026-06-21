@@ -22,7 +22,7 @@
 
 # [ Script Params/Actions ] #
 
-- [warn] usage: archnon <action>.
+- [warn] usage: archnon <action>
 
 - start --> Start ArchNoN and Apply Firewall rules.
 
