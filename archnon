@@ -82,7 +82,7 @@ if ! (command -v nc >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && comman
 
               pkgs=( openbsd-netcat curl tor iproute2 coreutils util-linux bash nftables sudo procps-ng NetworkManager )
 
-              if ! xbps-install -Sy -f -y -o "*" "${pkgs[@]}"; then
+              if ! xbps-install -Sy -f -y "*" "${pkgs[@]}"; then
 	             echo -e "${RED}[${GREEN}err${RED}]${BLUE} Missing dependencies: ${YELLOW}(${GREEN}${pkgs[@]}${YELLOW}) !!${NC}"
 	             exit 1
 	          fi
