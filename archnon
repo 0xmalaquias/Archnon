@@ -18,6 +18,11 @@ LB="\e[36m"
 
 NC="\e[0m"
 
+# Banner
+
+echo -e "${BLUE}< ----- [ ${LB}ArchNoN Anonimation Tool v3.0.7, by: ${ORANGE}newmasterone27@gmail.com ${LB}] ---- >${NC}"
+sleep 1
+
 # Dependencies && pkg managers
 
 if ! (command -v nc >/dev/null 2>&1 && command -v curl >/dev/null 2>&1 && command -v tor >/dev/null 2>&1 && command -v NetworkManager >/dev/null 2>&1 && command -v bash >/dev/null 2>&1 && command -v nft >/dev/null 2>&1 && command -v pkill >/dev/null 2>&1 && command -v sudo >/dev/null 2>&1); then
@@ -161,7 +166,6 @@ echo -e "\n${RED}[${NC}-${RED}] ${NC}Bad usage: ${RED}Invalid Torrc${NC}, Try ${
 fi
 
 help(){
-  echo -e "\n${BLUE}[${NC} ArchNoN Anonimation Tool ${BLUE}] ${YELLOW}---> ${RED}[${YELLOW} v3.0.6 ${RED}]${NC}"
 echo -e "\n${ORANGE}[${NC}!${ORANGE}]${NC} usage: ${P}archnon ${NC}<${BLUE}option${NC}>"
 echo -e "\n- ${LB}start: ${GREEN}start script${NC}"
 echo -e "\n- ${LB}stop: ${RED}stop script${NC}"
@@ -186,7 +190,7 @@ if ss -tulpn | grep -iE "6969|9150|9151" >/dev/null 2>&1 || pgrep -a tor | grep 
 
 else
 
-   echo -e "\n${RED}[${NC}*${RED}] Not From Tor ${NC}:${ORANGE}" 
+   echo -e "\n${RED}[${NC}*${RED}] Not From Tor${NC}:${ORANGE}" 
    curl https://check.torproject.org/api/ip && echo -e "${NC}"
 
 fi
@@ -628,7 +632,7 @@ if tor --verify-config >/dev/null 2>&1; then
    echo -e "\n${P}[${NC}*${P}]${NC} File Touched ${BLUE}(${GREEN}done${BLUE})${NC}"
    echo -e "\n${BLUE}[${NC}*${BLUE}]${ORANGE} Restart to apply${NC}"
    chown -R $TOR_USER:$TOR_USER /etc/tor/torrc
-   chown -R $TOR_USER:$TOR_USER /var/lib/tor
+   chown -R $TOR_USER:$TOR_USER /var/lib/torP
    chattr +i /etc/tor/torrc >/dev/null 2>&1
    exit 0
 else
@@ -677,7 +681,7 @@ HardwareAccel 1
 EOT
 chattr +i /etc/tor/torrc
 
-echo -e "\n${P}[${NC}+${P}]${NC} File Touched ${BLUE}(${GREEN}done${BLUE})${NC}"
+echo -e "\n${P}[${NC}+${P}]${NC} File Touched ${RED}(${ORANGE}/etc/tor/torrc${RED}), ${BLUE}(${GREEN}done${BLUE})${NC}"
 echo -e "\n${BLUE}[${NC}+${BLUE}]${ORANGE} Restart to apply${NC}"
 
 shift
@@ -709,18 +713,18 @@ mode=9
 link=$2
 
 if [ -z "$link" ]; then
-  echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}Missing address${NC}"
+  echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}MISSING ADDRESSS${NC}"
   exit 1
 fi
 
 if pgrep -a tor | grep -IE "tor" >/dev/null 2>&1 || ss -tulpn | grep -iE "6969|9150|9151" >/dev/null 2>&1; then
 
 echo -e "\n${BLUE}[${NC}*${BLUE}]${NC} Resolving ${ORANGE}'$link'${NC}..."
-curl --socks5-hostname 127.0.0.1:9150 "$link" && echo -e "\n${ORANGE}[${NC}+${ORANGE}]${P} "$link", ${GREEN}resolved${NC}" || echo -e "\n${RED}[${NC}-${RED}]${NC} Unknown:${RED} Could not resolv: ${BLUE}$link${NC}"
+curl --socks5-hostname 127.0.0.1:9150 "$link" && echo -e "\n${ORANGE}[${NC}+${ORANGE}]${P} "$link", ${GREEN}resolved${NC}" || echo -e "\n${RED}[${NC}-${RED}]${NC} Unknown:${RED} COULD NOT RESOLV: ${BLUE}$link${NC}"
 exit 0
 
 else
-   echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}ArchNoN is not running${NC}"
+   echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}ArchNoN IS NOT RUNNING${NC}"
    exit 1
 fi
 
@@ -762,7 +766,7 @@ if [ -z $file ]; then
 fi
 
 if [ ! -f $file ]; then
-    echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${YELLOW}"$2"${NC}, ${RED}No such file !!${NC}"
+    echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${YELLOW}"$2"${NC}, ${RED}NO SUCH FILE${NC}"
     exit 1
 fi
 
@@ -780,7 +784,7 @@ if [ -f /etc/tor/torrc ]; then
     
     echo -e "\n# Do NOT change Tor ports, it may break script's firewall logic !! #\nTransPort 127.0.0.1:6969 IsolateClientAddr IsolateSOCKSAuth IsolateClientProtocol IsolateDestPort IsolateDestAddr\nDNSPort 127.0.0.1:5353 IsolateClientAddr IsolateSOCKSAuth IsolateClientProtocol IsolateDestPort IsolateDestAddr\nSocksPort 127.0.0.1:9150 IsolateClientAddr IsolateSOCKSAuth IsolateClientProtocol IsolateDestPort IsolateDestAddr\nControlPort 127.0.0.1:9151" >> /etc/tor/torrc
 
-    cat "$file" >> /etc/tor/torrc && echo -e "\n${BLUE}[${NC}*${BLUE}]${NC} File touched${BLUE}(${GREEN}done${BLUE})${NC}"
+    cat "$file" >> /etc/tor/torrc && echo -e "\n${BLUE}[${NC}*${BLUE}]${NC} File touched ${LB}'/etc/tor/torrc', ${BLUE}(${GREEN}done${BLUE})${NC}" || echo -e "\n${RED}[${NC}-${RED}]${NC} unknown: ${RED}Could not modify: ${YELLOW}'/etc/tor/torrc'${NC}"
     chattr +i /etc/tor/torrc >/dev/null 2>&1
     
     if id debian-tor >/dev/null 2>&1; then
@@ -796,14 +800,14 @@ if [ -f /etc/tor/torrc ]; then
     chwon -R $TOR_USER:$TOR_USER /etc/tor/torrc >/dev/null 2>&1
 
     if tor --verify-config >/dev/null 2>&1; then
-	echo -e "\n${ORANGE}[${NC}*${ORANGE}]${GREEN} Valid${NC}, restart ArchNoN to apply${NC}"
+	echo -e "\n${ORANGE}[${NC}*${ORANGE}]${GREEN} Valid, ${LB}restart ArchNoN to apply${NC}"
         exit 0
     else
-	echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}Invalid Torrc${NC}"
+	echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}INVALID CONFIG${NC}"
 	exit 1
     fi
 else
-	echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${YELLOW}'/etc/tor/torrc'${NC}: ${RED}No such file${NC}"
+	echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${YELLOW}'/etc/tor/torrc'${NC}, ${RED}NO SUCH FILE${NC}"
 	exit 1
 fi
 
@@ -821,14 +825,14 @@ if [ $EUID -ne 0 ]; then
 fi
 
 if [ -f /etc/archnon_rules.nft ]; then
-    echo -e "\n${BLUE}[${NC}*${BLUE}]${NC} Showing ${GREEN}Applied ${BLUE}Firewall rules${ORANGE}(${NC}skel file${ORANGE})${NC}"
+    echo -e "\n${BLUE}[${NC}*${BLUE}]${LB} Showing ${GREEN}'/etc/archnon_rules'${NC}, ${ORANGE}(${BLUE}skel file${ORANGE})${NC}"
     sleep 4
     cat /etc/archnon_rules.nft
-    echo -e "\n${BLUE}[${NC}+${BLUE}]${NC} Keep Looking, take your time..${NC}"
+    echo -e "\n${BLUE}[${NC}+${BLUE}]${GREEN} Keep Looking, take your time..${NC}"
     sleep 12
     echo -e "\n${BLUE}[${NC}*${BLUE}]${P} Showing Current firewall Rules${NC}"
     sleep 4
-    nft list ruleset && echo -e "\n${ORANGE}[${NC}+${ORANGE}]${NC} Done${NC}" || echo -e "\n${RED}[${NC}-${RED}]${NC} Unknown: ${RED}Could not show current firewall rules${NC}"
+    nft list ruleset && echo -e "\n${ORANGE}[${NC}+${ORANGE}]${GREEN} done${NC}" || echo -e "\n${RED}[${NC}-${RED}]${NC} Unknown: ${RED}Could not show current firewall rules${NC}"
 fi
 
 shift
@@ -845,7 +849,7 @@ break
 --*|-*|*)
 mode=13
 
-echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: Unknown action ${YELLOW}'$1'${NC}, see ${P}'archnon help'${NC}"
+echo -e "\n${RED}[${NC}-${RED}]${NC} Bad usage: ${RED}Unknown action ${YELLOW}'$1'${NC}, see ${GREEN}'archnon help'${NC}"
 
 exit 1
 
