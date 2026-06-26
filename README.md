@@ -1,21 +1,24 @@
-# <[ ArchNoN Anonimation Tool v3.0.6 ]> #
+# <[ ArchNoN Anonimation Tool v3.0.7 ]> #
 
-[desctiption] Anonimation tool that makes your linux machine's internet traffic go through a secure firewall (nftables based) that only speaks Tor and no IPv6 policy(includes boot automation for the most used service managers).
+[desctiption] Anonimation tool that makes your linux machine's internet traffic go through a secure firewall (nftables based) that only speaks Tor and no IPv6 policy. Includes boot automation for the most used service managers and some more useful scripts as: a Torrc config manager, sys daemon and a Socks5 DNS's resolvtool.
 
 - [warn] ArchNoN is a personal project developed by newmasterone27@gmail.com, if you will use it you have to know that developer wont answer in case of any issue occurs in your machine(perhaps, issues are not common, in fact, they are incredible weird).
 
-- [warn] If you'll use it on a fakeroot/chroot env like proot/nethunter, on termux, you have to know that script will block you entirelly to use curl normally, (because it wont be able to apply firewall, only if you are rooted), to resolv any link you must use tool’s "resolv" param, that is the friendly version of curl's: --socks5-hostname 127.0.0.1:9150.
-
+- [warn] Fakeroot/chroot envs like: termux/proot/cointainers, usually have issues with DNS's resolution config and firewall rules that script applies, sometimes the only way to resolv DNS is by talking directly to the socks addr(can do this using resolvtool, in case of curl command).
 
 # [ Requeriments ] # 
 - [warn] Required PKGs: (bash, if not installed), all other pkgs can be managed by tool, actually.
-- [warn] Extra: Real full root access(to apply firewall rules and curl links normally as before, i mean, without needing the flag '--socks5-hostname 127.0.0.1:9150')
+- [warn] Extra: Full root access(to apply firewall rules and full anonimation of DNS queries with no issues)
 
+# [ Dir Content ] #
 
-# [ Content ] #
-- archnon >> Modern version of the script, it uses the modern, clean, faster alternative to iptables: nftables. Sometimes is much faster than old iptables(better on all sense).
+- archnon: Main script, which applies Tor, firewall, No IPv6, anonymous DNS queries via SOCKS5, also destroys it and leaves your system as before, if you want.
 
-- example_bridges.txt >> It is just a list of tor bridges, you can grab them from here: https://bridges.torproject.org/options/en, or, if you prefer .onion: kgclfuro65jjlivyzfmxiq2kyv5lickrl4qd.onion/options/en
+- archconfig: Simple but useful Torrc Manager(can modify in almost all sense your tor configuration file).
+
+- resolvtool: Simple SOCKS5 DNS resolution Tool(useful when trying .onion sites).
+
+- example_bridges.txt: An example file that contains some Tor bridges from: https://bridges.torproject.org/options/en, .onion: kgclfuro65jjlivyzfmxiq2kyv5lickrl4qd.onion/options/en.
 
 # [ Script Params/Actions ] #
 
@@ -27,27 +30,15 @@
 
 - restart --> Restart ArchNoN.
 
-- boot-enable --> Enable ArchNoN on boot.
+- enable --> Enable ArchNoN on boot.
 
-- boot-disable --> Disable ArchNoN on boot.
+- disable --> Disable ArchNoN on boot.
 
 - myip --> Show Public IP Address.
 
 - changeid --> Change Tor Public IP Address.
 
-- bridges --> Load a custom Tor bridges configuration file, usage: archnon bridges <file> <kind> <binary>.
-
-- config-reset --> Reset Tor's configuration file (/etc/tor/torrc) to ArchNoN's default.
-
-- config-show --> Show configuration files that were touched by ArchNoN (/etc/tor/torrc, /etc/resolv.conf).
-
-- config-load --> Load a custom Torrc(that is the file tor reads before start), usage: sudo archnon config-load <file>.
-
-- config-firewall --> Show used Firewall rules(/etc/archnon_rules.nft) 
-
-- resolv --> Resolves .onion addresses.
-
-- help --> Print this usage page.
+- daemon --> Lauch a Daemon PID that ensures ArchNoN cant die in your system, at least you want it to(useful for automated no leaks prevention at sys level).
 
 
 # [ Clone ] #
@@ -56,10 +47,4 @@
 
 # [ Boot ] #
 - [notice] Supported service managers are: Open-RC, Systemd and Runit only.
-- [warn] example: script detects if you use commands as: rc-service, rc-update, systemctl, sv, runit.
-
-# [ Recommended ] #
-
-- [notice] Configure a Web Browser(prefer tor's one, it is very easy): You would have to force its internet connection to the socks5 proxy address/ports, ex(if torbrowser): Proxy address: 127.0.0.1, Allowed ports: 443,80,9150,9151,6969, then Restart it. Note: it doesnt makes you 100% invisible, as i said before, will depend entirely on your browser/config you have on it.
-
-- [notice] Prefer use Tor bridges: just in case you want to hide it from your ISP, Tor is not allowed in your country, or, you want to keep an encrypted much faster connection.
+- [warn] Script detects: rc-service, rc-update, systemctl, sv, runit.
