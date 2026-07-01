@@ -19,7 +19,8 @@ LB="\e[36m"
 NC="\e[0m"
 
 ### Banner ###
-echo -e "\n${GREEN}<[${LB} MacTool ${YELLOW}v1.0.0 ${NC}By: ${ORANGE}newmasterone27@gmail.com ${GREEN}]>${NC}"
+echo -e "\n${GREEN}<[${LB} MacTool ${YELLOW}v1.0.0 ${GREEN}]>"
+echo -e "${ORANGE}[${BLUE}*${ORANGE}] ${YELLOW}Developed By: ${ORANGE}newmasterone27@gmail.com ${GREEN}]>${NC}"
 
 usage(){
 echo -e "\n${ORANGE}[${YELLOW}!${ORANGE}]${LB} usage: ${P}sudo mactool ${NC}<${LB}option${NC}>${NC}"
