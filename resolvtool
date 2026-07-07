@@ -75,7 +75,7 @@ fi
 echo -e "${P}" && figlet ResolvTool
 echo -n -e "${ORANGE}v1.0.0.2 ${LB}-->${P} Archnon's DNS resolution Tool${NC}"
 echo -e "\n"
-echo -e "${ORANGE}[${YELLOW}*${ORANGE}] ${GREEN}Developed By: ${ORANGE}newmasterone27@gmail.com${NC}"
+echo -e "${ORANGE}[${YELLOW}*${ORANGE}] ${GREEN}Coded By: ${ORANGE}gmasterone@duck.com${NC}"
 
 while [ $# -gt 0 ]; do
         case $1 in
