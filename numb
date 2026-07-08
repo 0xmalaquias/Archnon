@@ -124,7 +124,7 @@ if [ ! -f /etc/systemd/system/numb.service ] && command -v systemctl >/dev/null 
 Description=numb
 [Service]
 Type=forking
-ExecStart=numb start
+ExecStart=/usr/local/bin/numb start
 RemainAfterExit=yes
 User=root
 [Install]
