@@ -73,7 +73,7 @@ if ! command -v figlet >/dev/null 2>&1; then
 fi
 
 
-echo -e "${P}" && figlet neptuneresolv
+echo -e "${P}" && figlet neptuner
 echo -n -e "${ORANGE}v1.0.0.2 ${LB}-->${P} neptune's DNS resolution Tool${NC}"
 echo -e "\n"
 echo -e "${ORANGE}[${YELLOW}*${ORANGE}] ${GREEN}Coded By: ${ORANGE}gmasterone@duck.com${NC}"
